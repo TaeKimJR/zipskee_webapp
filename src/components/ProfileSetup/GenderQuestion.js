@@ -1,4 +1,5 @@
 import React from 'react';
+import { GENDER_MALE, GENDER_FEMALE, GENDER_OTHER } from '../../constants/UserConstants';
 
 const GenderQuestion = React.createClass({
   getInitialState() {
@@ -15,6 +16,7 @@ const GenderQuestion = React.createClass({
     e.preventDefault();
 
     if (this.state.genderValue) {
+      // set app state
       console.log('submitting');
     }
   },
@@ -25,7 +27,7 @@ const GenderQuestion = React.createClass({
         <input
           type="radio"
           name="gender"
-          value="male"
+          value={GENDER_MALE}
           onChange={this.handleGenderOnChange}
         />
         Male<br />
@@ -33,7 +35,7 @@ const GenderQuestion = React.createClass({
         <input
           type="radio"
           name="gender"
-          value="female"
+          value={GENDER_FEMALE}
           onChange={this.handleGenderOnChange}
         />
         Female<br />
@@ -41,7 +43,7 @@ const GenderQuestion = React.createClass({
         <input
           type="radio"
           name="gender"
-          value="other"
+          value={GENDER_OTHER}
           onChange={this.handleGenderOnChange}
         />
         Other<br />
