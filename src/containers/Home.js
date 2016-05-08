@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import LoginForm from '../components/authed/LoginForm';
 
 const propTypes = {
   dispatch: React.PropTypes.func.isRequired
@@ -15,7 +16,7 @@ const Home = React.createClass({
         {
           isAuthed ?
             <h2>LOGGED IN</h2> :
-            <h2>NOT LOGGED IN </h2>
+            <LoginForm handleLogin={() => { console.log('RAWR'); }} />
         }
       </div>
     );

@@ -18,7 +18,7 @@ export function authUser(accessToken) {
 
 export function fetchAuthedUser(accessToken) {
   return dispatch =>
-    fetch('http://localhost:8000/api/v1/me', { headers: { 'X-ZIPSKEE-SESSION': accessToken } })
+    fetch('http://localhost:8000/api/v1/login/session-info', { headers: { 'X-ZIPSKEE-SESSION': accessToken } })
       .then(response => response.json())
       .then(json => dispatch(receiveAuthedUserPre(accessToken, json)))
       .catch(err => { throw err; });
