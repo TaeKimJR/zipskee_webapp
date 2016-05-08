@@ -1,11 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import LoginForm from '../components/authed/LoginForm';
+import * as actions from '../actions/authed';
 
 const propTypes = {
   dispatch: React.PropTypes.func.isRequired
 };
 const Home = React.createClass({
+  login(username, password) {
+    this.props.dispatch(actions.loginUser(username, password));
+  },
+
   render() {
     const { authed } = this.props;
     const isAuthed = !!authed.user;
@@ -16,7 +21,7 @@ const Home = React.createClass({
         {
           isAuthed ?
             <h2>LOGGED IN</h2> :
-            <LoginForm handleLogin={() => { console.log('RAWR'); }} />
+            <LoginForm handleLogin={this.login} />
         }
       </div>
     );

@@ -31,6 +31,23 @@ export function receiveAuthedUserPre(accessToken, user) {
   };
 }
 
+export function loginUser(username, password) {
+  return dispatch =>
+    fetch('http://localhost:8000/api/v1/login',
+      {
+        method: 'POST',
+        body: JSON.stringify({ username, password})
+      }
+    )
+      .then(response => response.json())
+      .then(json => {
+        const { accessToken } = json;
+        dispatch(receiveAccessToken(accessToken));
+        dispatch(fetchAuthedUser(accessToken));
+      })
+      .catch(err => { throw err; });
+}
+
 export const RECEIVE_ACCESS_TOKEN = 'RECEIVE_ACCESS_TOKEN';
 export function receiveAccessToken(accessToken) {
   return {
