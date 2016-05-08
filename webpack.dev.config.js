@@ -64,7 +64,10 @@ module.exports = {
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.API_URL': '"http://localhost:8000/api/v1"'
+    })
   ],
   externals: {
     'cheerio': 'window',

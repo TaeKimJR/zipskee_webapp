@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import App from './containers/App';
 
-import Home from './components/static_pages/Home';
+import App from './containers/App';
+import Home from './containers/Home';
 import About from './components/static_pages/About';
 import Contact from './components/static_pages/Contact';
 import PrivacyPolicy from './components/static_pages/PrivacyPolicy';
@@ -23,7 +23,7 @@ export default (
     <IndexRoute component={Home}/>
     <Route path="about" component={About} />
     <Route path="termsandconditions" component={TermsAndConditions} />
-    <Route path="privacyPolicy" component={PrivacyPolicy} />
+    <Route path="privacypolicy" component={PrivacyPolicy} />
     <Route path="contact" component={Contact} />
     <Route path="team" component={Team} />
 
@@ -37,7 +37,7 @@ export default (
       <Route path="references" component={UserReferences} />
     </Route>
 
-    <Route path="userSettings" component={UserSettings} />
+    <Route path="usersettings" component={UserSettings} />
 
     <Route path="messages" component={Inbox} />
 
