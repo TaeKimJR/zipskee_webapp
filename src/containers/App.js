@@ -2,7 +2,7 @@ import '../assets/stylesheets/base.scss';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-// import { initAuth } from '../actions/authed';
+import * as authActions from '../actions/authed';
 
 
 const propTypes = {
@@ -11,9 +11,8 @@ const propTypes = {
 };
 const App = React.createClass({
   componentDidMount() {
-    console.log('API_URL' + process.env.API_URL);
-    // const { dispatch } = this.props;
-    // dispatch(initAuth());
+    const { dispatch } = this.props;
+    dispatch(authActions.initAuth());
   },
 
   render() {

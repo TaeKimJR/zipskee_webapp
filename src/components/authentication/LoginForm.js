@@ -8,7 +8,9 @@ const ListItemForm = React.createClass({
     };
   },
 
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault();
+
     const { username, password } = this.state;
     if (username && password) {
       this.props.handleLogin(username, password);
@@ -18,17 +20,19 @@ const ListItemForm = React.createClass({
   render() {
     return (
       <div>
-        <input
-          type='text'
-          value={this.state.username}
-          onChange={e => this.setState({ username: e.target.value })} />
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            value={this.state.username}
+            onChange={e => this.setState({ username: e.target.value })} />
 
-        <input
-          type='password'
-          value={this.state.password}
-          onChange={e => this.setState({ password: e.target.value })} />
+          <input
+            type="password"
+            value={this.state.password}
+            onChange={e => this.setState({ password: e.target.value })} />
 
-        <button onClick={this.handleSubmit}>Submit</button>
+          <button type="submit" >Submit</button>
+        </form>
       </div>
     );
   },

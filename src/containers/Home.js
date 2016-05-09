@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import LoginForm from '../components/authed/LoginForm';
+import LoginForm from '../components/authentication/LoginForm';
 import * as actions from '../actions/authed';
 
 const propTypes = {

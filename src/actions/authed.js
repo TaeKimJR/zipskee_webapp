@@ -36,12 +36,13 @@ export function loginUser(username, password) {
     fetch('http://localhost:8000/api/v1/login',
       {
         method: 'POST',
-        body: JSON.stringify({ username, password})
+        body: JSON.stringify({ username, password })
       }
     )
       .then(response => response.json())
       .then(json => {
         const { accessToken } = json;
+        Cookies.set(SESSION_TOKEN_COOKIE, accessToken);
         dispatch(receiveAccessToken(accessToken));
         dispatch(fetchAuthedUser(accessToken));
       })
