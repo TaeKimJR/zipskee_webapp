@@ -34,3 +34,4 @@ export const POPULATED_AUTHED_STATE = {
 
 export const USERNAME = 'aryastark@got.com';
 export const PASSWORD = 'thegirlwithnoname';
+export const OTHER_PASSWORD = 'needle';
