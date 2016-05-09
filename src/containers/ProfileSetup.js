@@ -1,5 +1,5 @@
 import React from 'react';
-import GenderQuestion from '../components/ProfileSetup/GenderQuestion';
+import GenderQuestion from '../components/profileSetup/GenderQuestion';
 
 const ProfileSetup = React.createClass({
   render() {

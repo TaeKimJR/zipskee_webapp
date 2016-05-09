@@ -3,11 +3,11 @@ import { Route, IndexRoute } from 'react-router';
 
 import App from './containers/App';
 import Home from './containers/Home';
-import About from './components/static_pages/About';
-import Contact from './components/static_pages/Contact';
-import PrivacyPolicy from './components/static_pages/PrivacyPolicy';
-import Team from './components/static_pages/Team';
-import TermsAndConditions from './components/static_pages/TermsAndConditions';
+import About from './components/staticPages/About';
+import Contact from './components/staticPages/Contact';
+import PrivacyPolicy from './components/staticPages/PrivacyPolicy';
+import Team from './components/staticPages/Team';
+import TermsAndConditions from './components/staticPages/TermsAndConditions';
 import ProfileSetup from './containers/ProfileSetup';
 import SearchResults from './containers/SearchResults';
 import User from './containers/User';
