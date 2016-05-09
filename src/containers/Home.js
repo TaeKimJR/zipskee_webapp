@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import LoginForm from '../components/authentication/LoginForm';
 import RegistrationForm from '../components/authentication/RegistrationForm';
 import * as actions from '../actions/authed';
@@ -19,14 +20,15 @@ const Home = React.createClass({
   render() {
     const { authed } = this.props;
     const isAuthed = !!authed.user;
-
     return (
       <div>
         <h1>ZIPSKEE</h1>
         {
           isAuthed ?
             <div>
-              LOGGED IN
+              <Link to={`/user/${authed.id}`}>Home</Link>
+              <Link to='/inbox'>Inbox</Link>
+              <Link to='/notifications'>Notifications</Link>
             </div> :
             <div>
               <h2>Login</h2>

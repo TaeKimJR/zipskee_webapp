@@ -38,7 +38,7 @@ const App = React.createClass({
         {' '}
         <Link to='/usersettings'>User Settings</Link>
         {' '}
-        <Link to='/messages'>Messages</Link>
+        <Link to='/inbox'>Inbox</Link>
         {' '}
         <Link to='/notifications'>Notifications</Link>
 
