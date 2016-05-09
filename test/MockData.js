@@ -31,3 +31,6 @@ export const POPULATED_AUTHED_STATE = {
   user: USER,
   accessToken: ACCESS_TOKEN
 };
+
+export const USERNAME = 'aryastark@got.com';
+export const PASSWORD = 'thegirlwithnoname';
