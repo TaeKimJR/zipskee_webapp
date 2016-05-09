@@ -1,6 +1,9 @@
 import React, { PropTypes } from 'react';
 
-const ListItemForm = React.createClass({
+const propTypes = {
+  handleLogin: PropTypes.func.isRequired
+};
+const LoginForm = React.createClass({
   getInitialState() {
     return {
       username: '',
@@ -23,11 +26,13 @@ const ListItemForm = React.createClass({
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
+            placeholder="Username"
             value={this.state.username}
             onChange={e => this.setState({ username: e.target.value })} />
 
           <input
             type="password"
+            placeholder="Password"
             value={this.state.password}
             onChange={e => this.setState({ password: e.target.value })} />
 
@@ -35,11 +40,8 @@ const ListItemForm = React.createClass({
         </form>
       </div>
     );
-  },
-
-  propTypes: {
-    handleLogin: PropTypes.func.isRequired
   }
 });
+LoginForm.propTypes = propTypes;
 
-export default ListItemForm;
+export default LoginForm;

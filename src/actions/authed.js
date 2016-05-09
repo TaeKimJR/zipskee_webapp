@@ -49,6 +49,21 @@ export function loginUser(username, password) {
       .catch(err => { throw err; });
 }
 
+export function registerUser(firstName, lastName, email, password, passwordConfirmation) {
+  return dispatch =>
+    fetch('http://localhost:8000/api/v1/users',
+      {
+        method: 'POST',
+        body: JSON.stringify({ firstName, lastName, email, password, passwordConfirmation })
+      }
+    )
+      .then(response => response.json())
+      .then(json => {
+        dispatch(loginUser(json.email, json.password));
+      })
+      .catch(err => { throw err; });
+}
+
 export const RECEIVE_ACCESS_TOKEN = 'RECEIVE_ACCESS_TOKEN';
 export function receiveAccessToken(accessToken) {
   return {
