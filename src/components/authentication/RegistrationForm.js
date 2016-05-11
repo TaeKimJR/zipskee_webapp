@@ -48,13 +48,15 @@ const RegistrationForm = React.createClass({
 
           <input
             type="password"
+            name="password"
             placeholder="Password"
             value={this.state.password}
             onChange={e => this.setState({ password: e.target.value })} />
 
           <input
             type="password"
-            value={this.state.password}
+            name="passwordConfirmation"
+            value={this.state.passwordConfirmation}
             placeholder="Confirm Password"
             onChange={e => this.setState({ passwordConfirmation: e.target.value })} />
 

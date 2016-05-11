@@ -19,15 +19,30 @@ export function authUser(accessToken) {
 export function fetchAuthedUser(accessToken) {
   return dispatch =>
     fetch('http://localhost:8000/api/v1/login/session-info', { headers: { 'X-ZIPSKEE-SESSION': accessToken } })
-      .then(response => response.json())
-      .then(json => dispatch(receiveAuthedUserPre(accessToken, json)))
+      .then(response => {
+        debugger;
+        response.json();
+      })
+      .then(json => {  // eslint-disable-line
+        debugger;
+        // TODO: mocked
+        const user = {
+          id: '1',
+          firstName: 'tae',
+          lastName: 'kim',
+          email: 'taekimjr@gmail.com'
+        };
+        dispatch(receiveAuthedUserPre(accessToken, user));
+      })
       .catch(err => { throw err; });
 }
 
 export function receiveAuthedUserPre(accessToken, user) {
   return dispatch => {
+    // TODO: normalizr
     dispatch(receiveAccessToken(accessToken));
     dispatch(receiveAuthedUser(user));
+    // TODO: fetch contacts, favorites
   };
 }
 
@@ -39,14 +54,41 @@ export function loginUser(username, password) {
         body: JSON.stringify({ username, password })
       }
     )
-      .then(response => response.json())
-      .then(json => {
-        const { accessToken } = json;
-        Cookies.set(SESSION_TOKEN_COOKIE, accessToken);
-        dispatch(receiveAccessToken(accessToken));
-        dispatch(fetchAuthedUser(accessToken));
+      .then(response => {
+        debugger;
+        response.json();
+      })
+      .then(json => { // eslint-disable-line
+        debugger;
+        const mockAccessToken = '1'; // TODO: mocked
+        Cookies.set(SESSION_TOKEN_COOKIE, mockAccessToken);
+        dispatch(receiveAccessToken(mockAccessToken));
+        dispatch(fetchAuthedUser(mockAccessToken));
       })
       .catch(err => { throw err; });
+}
+
+export function logoutUser() {
+  return dispatch => {
+    const accessToken = Cookies.get(SESSION_TOKEN_COOKIE);
+    fetch('http://localhost:8000/api/v1/logout',
+      {
+        method: 'POST',
+        headers: { 'X-ZIPSKEE-SESSION': accessToken }
+      }
+    )
+      .then(response => {
+        debugger;
+        response.json();
+      })
+      .then(json => { // eslint-disable-line
+        Cookies.remove(SESSION_TOKEN_COOKIE);
+        dispatch(resetAuthed());
+      })
+      .catch(err => {
+        throw err;
+      });
+  };
 }
 
 export function registerUser(firstName, lastName, email, password, passwordConfirmation) {
@@ -57,9 +99,15 @@ export function registerUser(firstName, lastName, email, password, passwordConfi
         body: JSON.stringify({ firstName, lastName, email, password, passwordConfirmation })
       }
     )
-      .then(response => response.json())
-      .then(json => {
-        dispatch(loginUser(json.email, json.password));
+      .then(response => {
+        debugger;
+        response.json();
+      })
+      .then(json => {   // eslint-disable-line
+        debugger;
+        const mockEmail = 'taekimjr@gmail.com';
+        const mockPassword = 'password';
+        dispatch(loginUser(mockEmail, mockPassword));
       })
       .catch(err => { throw err; });
 }

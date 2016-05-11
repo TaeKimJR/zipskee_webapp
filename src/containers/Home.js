@@ -13,6 +13,10 @@ const Home = React.createClass({
     this.props.dispatch(actions.loginUser(username, password));
   },
 
+  logout() {
+    this.props.dispatch(actions.logoutUser());
+  },
+
   register(firstName, lastName, email, password, passwordConfirmation) {
     this.props.dispatch(actions.registerUser(firstName, lastName, email, password, passwordConfirmation));
   },
@@ -29,6 +33,7 @@ const Home = React.createClass({
               <Link to={`/user/${authed.id}`}>Home</Link>
               <Link to='/inbox'>Inbox</Link>
               <Link to='/notifications'>Notifications</Link>
+              <a onClick={this.logout}>Logout</a>
             </div> :
             <div>
               <h2>Login</h2>

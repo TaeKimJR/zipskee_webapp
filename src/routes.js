@@ -27,7 +27,16 @@ export default (
     <Route path="contact" component={Contact} />
     <Route path="team" component={Team} />
 
-    <Route path="setup" component={ProfileSetup} />
+    <Route path="setup" component={ProfileSetup}>
+      <Route path="gender" component={UserPhotos} />
+      <Route path="birthday" component={UserPhotos} />
+      <Route path="interests" component={UserPhotos} />
+      <Route path="languages" component={UserPhotos} />
+      <Route path="city" component={UserPhotos} />
+      <Route path="status" component={UserPhotos} />
+      <Route path="profilepic" component={UserPhotos} />
+      <Route path="complete" component={UserPhotos} />
+    </Route>
 
     <Route path="search" component={SearchResults} />
 
