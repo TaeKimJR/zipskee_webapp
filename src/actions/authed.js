@@ -7,7 +7,7 @@ export function initAuth() {
     if (accessToken) {
       return dispatch(authUser(accessToken, false));
     }
-    return null;
+    return dispatch(setAuthingFetchComplete());
   };
 }
 
@@ -42,6 +42,7 @@ export function receiveAuthedUserPre(accessToken, user) {
     // TODO: normalizr
     dispatch(receiveAccessToken(accessToken));
     dispatch(receiveAuthedUser(user));
+    dispatch(setAuthingFetchComplete());
     // TODO: fetch contacts, favorites
   };
 }
@@ -125,6 +126,13 @@ export function receiveAuthedUser(user) {
   return {
     type: RECEIVE_AUTHED_USER,
     user
+  };
+}
+
+export const SET_AUTHING_FETCH_COMPLETE = 'SET_AUTHING_FETCH_COMPLETE';
+export function setAuthingFetchComplete() {
+  return {
+    type: SET_AUTHING_FETCH_COMPLETE
   };
 }
 

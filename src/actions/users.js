@@ -6,7 +6,9 @@ export function updateUser(userId, newProps) {
         body: JSON.stringify(newProps)
       }
     )
-      .then(response => response.json())
+      .then(response => {
+        response.json();
+      })
       .then(json => {
         // TODO: normalizr
         dispatch(receiveUser(json));

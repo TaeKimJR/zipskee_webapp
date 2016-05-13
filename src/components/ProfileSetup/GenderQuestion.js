@@ -1,57 +1,46 @@
 import React from 'react';
 import { GENDER_MALE, GENDER_FEMALE, GENDER_OTHER } from '../../constants/UserConstants';
 
+const propTypes = {
+  selectedGender: React.PropTypes.string,
+  onGenderChange: React.PropTypes.func.isRequired,
+  onQuestionCompletion: React.PropTypes.func.isRequired
+};
 const GenderQuestion = React.createClass({
-  getInitialState() {
-    return { genderValue: null };
-  },
-
-  handleGenderOnChange(e) {
-    this.setState({
-      genderValue: e.target.value
-    });
-  },
-
-  handleSubmit(e) {
-    e.preventDefault();
-
-    if (this.state.genderValue) {
-      // set app state
-      console.log('submitting');
-    }
-  },
-
   render() {
+    const { selectedGender, onGenderChange, onQuestionCompletion } = this.props;
+
     return (
-      <form onSubmit={this.handleSubmit}>
+      <div>
         <input
           type="radio"
           name="gender"
-          value={GENDER_MALE}
-          onChange={this.handleGenderOnChange}
+          checked={selectedGender === GENDER_MALE}
+          onChange={onGenderChange.bind(null, GENDER_MALE)}
         />
         Male<br />
 
         <input
           type="radio"
           name="gender"
-          value={GENDER_FEMALE}
-          onChange={this.handleGenderOnChange}
+          checked={selectedGender === GENDER_FEMALE}
+          onChange={onGenderChange.bind(null, GENDER_FEMALE)}
         />
         Female<br />
 
         <input
           type="radio"
           name="gender"
-          value={GENDER_OTHER}
-          onChange={this.handleGenderOnChange}
+          checked={selectedGender === GENDER_OTHER}
+          onChange={onGenderChange.bind(null, GENDER_OTHER)}
         />
         Other<br />
 
-        <button type="submit">Next</button>
-      </form>
+        <button onClick={onQuestionCompletion}>Next</button>
+      </div>
     );
   }
 });
+GenderQuestion.propTypes = propTypes;
 
 export default GenderQuestion;

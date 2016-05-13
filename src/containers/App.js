@@ -16,6 +16,11 @@ const App = React.createClass({
   },
 
   render() {
+    const { isLoading } = this.props;
+    if (isLoading) {
+      return <div>LOADING</div>;
+    }
+
     return (
       <div>
         Welcome!
@@ -52,7 +57,10 @@ const App = React.createClass({
 App.propTypes = propTypes;
 
 function mapStateToProps(state) {
-  return state;
+  const { authed } = state;
+  return {
+    isLoading: authed.isFetching
+  };
 }
 
 export default connect(mapStateToProps)(App);
